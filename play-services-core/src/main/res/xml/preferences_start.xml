@@ -37,6 +37,11 @@
             android:key="pref_checkin"
             android:title="@string/service_name_checkin" />
         <Preference
+            android:icon="@drawable/empty"
+            android:key="pref_master"
+            android:summary="Get the master token for 3rd party apps (Sharing with unauthorized people can lead to security concerns)"
+            android:title="Retrieve Master Tokens" />
+        <Preference
             android:icon="@drawable/ic_cloud_bell"
             android:key="pref_gcm"
             android:title="@string/service_name_mcs" />

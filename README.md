@@ -1,5 +1,10 @@
 microG Services
-=======
+
+## Fork of Revanced GmsCore
+
+This is a fork of Revanced GmsCore, which is a fork of microG GmsCore. The goal of this fork is to allow an authenticated user to retrieve his own master token (`aas_et` tokens) from the device. This is useful for applications that require the master token to authenticate the user.
+
+
 [![Build status](https://github.com/microg/GmsCore/actions/workflows/build.yml/badge.svg)](https://github.com/microg/GmsCore/actions/workflows/build.yml)
 
 microG Services is a FLOSS (Free/Libre Open Source Software) framework to allow applications designed for Google Play Services to run on systems, where Play Services is not available.

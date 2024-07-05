@@ -35,6 +35,11 @@ class SettingsFragment : ResourceSettingsFragment() {
             findNavController().navigate(requireContext(), R.id.openCheckinSettings)
             true
         }
+        findPreference<Preference>(PREF_MASTER_TOKEN)!!.onPreferenceClickListener = Preference.OnPreferenceClickListener {
+            findNavController().navigate(requireContext(), R.id.openMasterToken)
+            true
+        }
+
         findPreference<Preference>(PREF_GCM)!!.onPreferenceClickListener = Preference.OnPreferenceClickListener {
             findNavController().navigate(requireContext(), R.id.openGcmSettings)
             true
@@ -135,6 +140,7 @@ class SettingsFragment : ResourceSettingsFragment() {
         const val PREF_CHECKIN = "pref_checkin"
         const val PREF_VENDING = "pref_vending"
         const val PREF_ACCOUNTS = "pref_accounts"
+        const val PREF_MASTER_TOKEN = "pref_master"
     }
 
     init {
