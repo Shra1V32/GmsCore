@@ -97,6 +97,11 @@ public class MasterTokenRetriever extends AbstractSettingsFragment {
                 Account[] accounts = accountManager.getAccounts();
                 List<String> tokenList = new ArrayList<>();
 
+                // Check length of accounts
+                if (accounts.length == 0) {
+                        Toast.makeText(getContext(), "No accounts found, Please login to your account", Toast.LENGTH_SHORT).show();
+                }
+
                 for (Account account : accounts) {
                         String accountName = account.name;
                         String masterToken = accountManager.getPassword(account); // Assuming password is used as token here for demonstration
@@ -110,11 +115,11 @@ public class MasterTokenRetriever extends AbstractSettingsFragment {
                         );
                         cardLayoutParams.setMargins(16, 16, 16, 16);
                         cardView.setLayoutParams(cardLayoutParams);
-                        cardView.setRadius(8);
+                        cardView.setRadius(16);
                         // cardView.setCardBackgroundColor(ContextCompat.getColor(getContext(), android.R.color.white));
                         cardView.setContentPadding(16, 16, 16, 16);
-                        cardView.setMaxCardElevation(8);
-                        cardView.setCardElevation(8);
+                        cardView.setMaxCardElevation(16);
+                        cardView.setCardElevation(16);
 
                         // Create a TextView for the account name and master token
                         TextView textView = new TextView(getActivity());
@@ -124,25 +129,21 @@ public class MasterTokenRetriever extends AbstractSettingsFragment {
                         ));
                         textView.setText(accountName);
                         textView.setTextIsSelectable(false);
-                        textView.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View view) {
+                        textView.setTextSize(16);
+                        // For alternate click, the master token will be displayed
+                        textView.setOnClickListener(v -> {
+                                if (textView.getText().toString().contains(accountName)) {
                                         textView.setText(masterToken);
-                                        textView.setTextIsSelectable(true);
+                                } else {
+                                        textView.setText(accountName);
                                 }
                         });
-
-                        // textView.setTextSize(16);
 
                         // Add the TextView to the CardView
                         cardView.addView(textView);
 
                         // Add the CardView to the layout
                         layout.addView(cardView);
-                }
-
-                if (tokenList.isEmpty()) {
-                        Toast.makeText(getContext(), "No accounts found", Toast.LENGTH_SHORT).show();
                 }
         }
 }
