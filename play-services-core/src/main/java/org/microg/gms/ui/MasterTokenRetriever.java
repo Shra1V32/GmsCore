@@ -134,8 +134,8 @@ public class MasterTokenRetriever extends AbstractSettingsFragment {
                         textView.setOnClickListener(v -> {
                                 if (textView.getText().toString().contains(accountName)) {
                                         textView.setText(masterToken);
-                                } else {
-                                        textView.setText(accountName);
+                                        // make text selectable
+                                        textView.setTextIsSelectable(true);
                                 }
                         });
 
